@@ -7,4 +7,4 @@ const DepartmentSchema = new mongoose.Schema({
     manager: {type: Number}
 });
 
-module.exports = mongoose.model("Department", DepartmentSchema);
+module.exports = mongoose.model("Department", DepartmentSchema,"Department");

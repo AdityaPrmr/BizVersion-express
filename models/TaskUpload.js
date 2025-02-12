@@ -12,4 +12,4 @@ const TaskUploadSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 
-module.exports = mongoose.model("TaskUpload", TaskUploadSchema);
+module.exports = mongoose.model("TaskUpload", TaskUploadSchema,"TaskUpload");
