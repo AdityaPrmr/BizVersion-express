@@ -10,6 +10,11 @@ const connectDB = async()=>{
         })
         .then(() => console.log("Connected to MongoDB"))
         .catch(err => console.error("MongoDB connection error:", err));
+
+        mongoose.connection.once("open", async () => {
+            const collections = await mongoose.connection.db.listCollections().toArray();
+            console.log("Collections in DB:", collections.map(c => c.name));
+        });
     }
     catch(error)
     {
