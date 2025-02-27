@@ -35,7 +35,7 @@ router.post('/find', async (req, res) => {
     {
         let newBusiness = { ...req.body };
 
-        const data = await Business.findOne();
+        const data = await Business.findOne({_id:newBusiness._id});
         
         if (!data) {
           return res.status(404).json({ error: "No business found" });
