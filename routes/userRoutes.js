@@ -35,7 +35,7 @@ router.post('/find', async (req, res) => {
     {
         let _id = { ...req.body };
 
-        const data = await Business.findOne({_id});
+        const data = await Business.findOne({_id: new mongoose.Types.ObjectId(_id)});
         
         if (!data) {
           return res.status(404).json({ error: "No business found" });
