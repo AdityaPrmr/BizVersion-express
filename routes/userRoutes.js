@@ -35,6 +35,7 @@ router.post('/find', async (req, res) => {
     try
     {
         let _id = req.body;
+        _id = _id.replace(/['"]+/g, '').trim();
         console.log(_id);
         const data = await Business.findOne({ _id:_id });
         
