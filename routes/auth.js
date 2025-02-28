@@ -46,6 +46,7 @@ router.post("/login",async(req,res)=>{
 });
 
 
+
 router.post("/detail",async(req,res)=>{
     try
     {
@@ -93,5 +94,45 @@ router.post("/detail",async(req,res)=>{
         res.status(500).json({error: error.message});
     }
 });
+
+
+router.post("/res",async(req,res)=>{
+    try
+    {
+        const {email} = req.body;
+        const user = await User.findOne({ email});
+        if(!user)
+        {
+            const b = await Bussiness.findOne({businessEmail: email });
+            if(!b)
+            {
+                const e = await Employee.findOne({email});
+                if(!e)
+                {
+                    res.status(404).json({message:"User not found"});
+                    console.log(e);
+                }
+                else
+                {
+                    res.status(200).json({"msg":"sucess"});
+                }
+            }
+            else
+            {
+                res.status(200).json({"msg":"sucess"});
+            }
+
+        }
+        else
+        {
+            res.status(200).json({"msg":"sucess"});
+        }
+    }
+    catch(error)
+    {
+        res.status(500).json({error: error.message});
+    }
+});
+
 
 module.exports = router;
