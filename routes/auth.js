@@ -109,7 +109,7 @@ router.post("/res",async(req,res)=>{
                 const e = await Employee.findOne({email});
                 if(!e)
                 {
-                    res.status(404).json({message:"User not found"});
+                    res.status(500).json({message:"User not found"});
                     console.log(e);
                 }
                 else
